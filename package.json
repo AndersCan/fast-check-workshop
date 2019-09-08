@@ -36,6 +36,8 @@
   },
   "homepage": "https://github.com/AndersCan/fast-check-workshop#readme",
   "dependencies": {
+    "@types/node-fetch": "^2.5.0",
+    "node-fetch": "^2.6.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },

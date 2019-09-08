@@ -15,7 +15,7 @@ Distributive property: The sum of two numbers times a third number is equal to t
 
 test('addition - Commutative property', () => {
   fc.assert(
-    fc.property(fc.integer(), fc.integer(), (a, b) => {
+    fc.property(fc.integer(10000), fc.integer(10000), (a, b) => {
       expect(a + b).toEqual(b + a);
     })
   );
@@ -26,7 +26,7 @@ test('addition - Commutative property', () => {
 test('addition - Associative Property', () => {
   const shuffle = (array: number[]) => array.sort(() => Math.random() - 0.5);
   fc.assert(
-    fc.property(fc.array(fc.integer(), 3, 100), (arr) => {
+    fc.property(fc.array(fc.integer(10000), 3, 100), (arr) => {
       const sumA = shuffle(arr).reduce(addition);
       const sumB = shuffle(arr).reduce(addition);
       expect(sumA).toEqual(sumB);
@@ -38,7 +38,7 @@ test('addition - Associative Property', () => {
 
 test('addition - Additive Identity Property', () => {
   fc.assert(
-    fc.property(fc.integer(), (a) => {
+    fc.property(fc.integer(10000), (a) => {
       expect(a + 0).toEqual(a);
     })
   );
@@ -48,8 +48,13 @@ test('addition - Additive Identity Property', () => {
 
 test('addition - Distributive property', () => {
   fc.assert(
-    fc.property(fc.integer(), fc.integer(), fc.integer(), (a, b, c) => {
-      expect(a * (b + c)).toEqual(a * b + a * c);
-    })
+    fc.property(
+      fc.integer(1, 1000),
+      fc.integer(1, 1000),
+      fc.integer(1, 1000),
+      (a, b, c) => {
+        expect(a * (b + c)).toEqual(a * b + a * c);
+      }
+    )
   );
 });
