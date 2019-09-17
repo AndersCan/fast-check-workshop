@@ -1,5 +1,3 @@
-// SECRET FILE - DO NOT READ :)
-
 export function bigIntAddition(a: string, b: string): string {
   const as = a.split('').reverse();
   const bs = b.split('').reverse();

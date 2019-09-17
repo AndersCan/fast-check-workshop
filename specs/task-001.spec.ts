@@ -1,5 +1,5 @@
 import * as fc from 'fast-check';
-import { addition } from '../src/addition';
+import { addition } from '../src/task-001';
 
 /**
 There are four mathematical properties which involve addition. The properties are the commutative, associative, additive identity and distributive properties.

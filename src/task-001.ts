@@ -1,1 +1,3 @@
-// Write PROPertytest for `sum` that fails
+export function addition(a: number, b: number): number {
+  return a + b;
+}
