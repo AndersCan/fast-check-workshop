@@ -1,35 +1,19 @@
-// traffic light
+// ex: username=John Doe;
 
-export type LightAction = 'red' | 'yellow' | 'green';
+let dummyCookie = '';
 
-export interface LightState {
-  red: boolean;
-  yellow: boolean;
-  green: boolean;
+export function addCookie(name: string, value: string) {
+  dummyCookie = `${dummyCookie};${name}=${value}`;
 }
 
-export function lightReducer(
-  state: LightState,
-  action: LightAction
-): LightState {
-  switch (action) {
-    case 'red': {
-      return {
-        ...state,
-        red: !state.red
-      };
-    }
-    case 'yellow': {
-      return {
-        ...state,
-        yellow: !state.yellow
-      };
-    }
-    case 'green': {
-      return {
-        ...state,
-        green: !state.green
-      };
-    }
+export function getCookie(name: string) {
+  const cookie = dummyCookie
+    .split(';')
+    .find((cookie) => cookie.startsWith(name));
+
+  if (!cookie) {
+    return undefined;
   }
+
+  return cookie.split('=')[1];
 }

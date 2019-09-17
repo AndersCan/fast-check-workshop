@@ -1,14 +1,14 @@
 import * as fc from 'fast-check';
-import { addCookie, getCookie } from '../src/task-002';
 
-describe('cookie', () => {
-  test('after setting a cookie, we can get it', () => {
+describe('JSON parse', () => {
+  test('parse and unparse gives same result', () => {
     fc.assert(
-      fc.property(fc.string(), fc.string(), (name, value) => {
-        addCookie(name, value);
-        const cookieValue = getCookie(name);
-        expect(cookieValue).toEqual(value);
-      })
+      fc.property(fc.anything(), (anything) => {
+        const expected = anything;
+        const result = JSON.parse(JSON.stringify(anything));
+        expect(result).toEqual(expected);
+      }),
+      {}
     );
   });
 });
