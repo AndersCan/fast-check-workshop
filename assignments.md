@@ -1,5 +1,17 @@
 # Assignments
 
+## Boilerplate
+
+```javascript
+test('jest testname', () => {
+  fc.assert(
+    fc.property(fc.integer(), (a) => {
+      expect(a).toEqual(a);
+    })
+  );
+});
+```
+
 ## Task 001
 
 In this task we will test the properties of addition (+)
@@ -28,6 +40,10 @@ The opposite of `JSON.parse` is `JSON.stringify`. Can you write a property that 
 use the arbitrary `anything` (`fc.anything()`)
 
 </details>
+
+### Part 2
+
+Can you write a propertybased test for `parseDurationToText`? You can decide the properties you want to test
 
 ## Task 003
 

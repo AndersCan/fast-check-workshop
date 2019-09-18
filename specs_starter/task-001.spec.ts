@@ -13,18 +13,48 @@ Additive Identity Property: The sum of any number and zero is the original numbe
 Distributive property: The sum of two numbers times a third number is equal to the sum of each addend times the third number. For example 4 * (6 + 3) = 4*6 + 4*3
  */
 
-test('addition - Commutative property', () => {});
+test('addition - Commutative property', () => {
+  fc.assert(
+    fc.property(fc.integer(10000), fc.integer(10000), (a, b) => {
+      expect(a + b).toEqual(b + a);
+    })
+  );
+});
 
 // Associative Property: When three or more numbers are added, the sum is the same regardless of the grouping of the addends. For example (2 + 3) + 4 = 2 + (3 + 4)
 
 test('addition - Associative Property', () => {
   const shuffle = (array: number[]) => array.sort(() => Math.random() - 0.5);
+  fc.assert(
+    fc.property(fc.array(fc.integer(10000), 3, 100), (arr) => {
+      const sumA = shuffle(arr).reduce(addition);
+      const sumB = shuffle(arr).reduce(addition);
+      expect(sumA).toEqual(sumB);
+    })
+  );
 });
 
 // Additive Identity Property: The sum of any number and zero is the original number. For example 5 + 0 = 5.
 
-test('addition - Additive Identity Property', () => {});
+test('addition - Additive Identity Property', () => {
+  fc.assert(
+    fc.property(fc.integer(10000), (a) => {
+      expect(a + 0).toEqual(a);
+    })
+  );
+});
 
 // Distributive property: The sum of two numbers times a third number is equal to the sum of each addend times the third number. For example 4 * (6 + 3) = 4*6 + 4*3
 
-test('addition - Distributive property', () => {});
+test('addition - Distributive property', () => {
+  fc.assert(
+    fc.property(
+      fc.integer(1, 1000),
+      fc.integer(1, 1000),
+      fc.integer(1, 1000),
+      (a, b, c) => {
+        expect(a * (b + c)).toEqual(a * b + a * c);
+      }
+    )
+  );
+});
